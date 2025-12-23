@@ -1,0 +1,23 @@
+.user-box {
+    position: relative;
+    cursor: pointer;
+    height: 40px;
+}
+
+/* 初期状態：非表示 */
+.logout-button {
+    display: none;
+    position: absolute;
+    top: -40px;
+    right: 100px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* hover 時に表示 */
+.user-box:hover .logout-button {
+    opacity: 1;
+    display: block;
+    pointer-events: auto;
+}
