@@ -2,19 +2,27 @@
 
 import { useState, useEffect } from "react";
 import Tree from "react-d3-tree";
-import { GetDepartmentOut, TreeData } from "@/types/Department";
+import { GetDepartmentOut, TreeData, TreeNodeDatum } from "@/types/Department";
 import { getDepartmentsAPI } from "@/app/API/departent";
 
 type DepartmentTreeProps = {
     treeData: TreeData[];
     setTreeData: (treeData: TreeData[]) => void;
     convertToTreeData: (dept: GetDepartmentOut) => TreeData;
-    onSelectNode: (node: any) => void;
+    onSelectNode: (node: TreeNodeDatum) => void;
     client_id: number;
     token: string;
 };
 
-export default function DepartmentTree({ treeData, setTreeData, convertToTreeData, onSelectNode, client_id, token }: DepartmentTreeProps) {
+export default function DepartmentTree(
+    {
+        treeData,
+        setTreeData,
+        convertToTreeData,
+        onSelectNode,
+        client_id,
+        token
+    }: DepartmentTreeProps) {
     const [translate, setTranslate] = useState({ x: 0, y: 0 });
 
 
@@ -43,7 +51,7 @@ export default function DepartmentTree({ treeData, setTreeData, convertToTreeDat
                     data={treeData}
                     translate={translate}
                     orientation="vertical"
-                    onNodeClick={(node: any) => onSelectNode(node.data)}
+                    onNodeClick={(node) => onSelectNode(node.data)}
                     pathFunc="diagonal"
                 />
             ) : (

@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useContext, useMemo, useEffect } from "react";
 import { GetSalesOut, PutSalesIn, PutSalesOut } from "@/types/Sales";
-import { PutPurchaseDetailsIn } from "@/types/PurchaseDetails";
+import { GetPurchaseDetailsOut, PutPurchaseDetailsIn } from "@/types/PurchaseDetails";
 import { SalesStatus } from "@/constants/status";
 import { validate } from "./components/validate";
 import { useParams } from "next/navigation";
@@ -56,7 +56,7 @@ export const SalesProvider = ({ children }: { children: React.ReactNode }) => {
             purchase_details: prev?.purchase_details.filter((r) => getRowKey(r) !== rowKey)
         } as GetSalesOut));
 
-    const getRowKey = (r: any) =>
+    const getRowKey = (r: GetPurchaseDetailsOut) =>
         r.purchase_id ?? r.front_id;
 
 
