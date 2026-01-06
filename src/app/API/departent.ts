@@ -1,6 +1,6 @@
 import { DeleteDepartmentOut, GetDepartmentOut, PostDepartmentIn, PostDepartmentOut, PutDepartmentIn, PutDepartmentOut, UpdateDepartmentNameOut } from "@/types/Department";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = "https://custmanage-backend.onrender.com";
 
 export const getDepartmentsAPI = async (client_id: number, token: string) => {
     try {
