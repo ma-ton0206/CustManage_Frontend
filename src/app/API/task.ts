@@ -1,5 +1,7 @@
 import { GetTaskOut, PostTaskIn, PutTaskIn, PostTaskOut, PutTaskOut, DeleteTaskOut } from "@/types/Task";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const getTasksAPI = async (token: string) => {
     try {
         console.log("token", token);
@@ -7,7 +9,7 @@ export const getTasksAPI = async (token: string) => {
             throw new Error("Token is required");
         }
         console.log("getTasksAPI called");
-        const response = await fetch(`http://localhost:8000/api/tasks`, {
+        const response = await fetch(`${API_URL}/api/tasks`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -33,7 +35,7 @@ export const createTaskAPI = async (task_in: PostTaskIn, token: string) => {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/tasks`, {
+        const response = await fetch(`${API_URL}/api/tasks`, {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(task_in),
@@ -58,7 +60,7 @@ export const updateTaskAPI = async (task_id: number, task: PutTaskIn, token: str
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/tasks/${task_id}`, {
+        const response = await fetch(`${API_URL}/api/tasks/${task_id}`, {
             method: "PUT",
             credentials: "include",
             body: JSON.stringify(task),
@@ -83,7 +85,7 @@ export const deleteTaskAPI = async (task_id: number, token: string) => {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/tasks/${task_id}`, {
+        const response = await fetch(`${API_URL}/api/tasks/${task_id}`, {
             method: "DELETE",
             credentials: "include",
             headers: {

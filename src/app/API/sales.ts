@@ -1,11 +1,13 @@
 import { GetSalesDetailOut, GetSalesOut, GetSalesTrendOut, GetYearSalesOut, PostSalesIn, PostSalesOut, PutSalesIn, PutSalesOut, GetTopSalesOut } from "@/types/Sales";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const getSalesAPI = async (token: string) => {
     try {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/sales`, {
+        const response = await fetch(`${API_URL}/api/sales`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -29,7 +31,7 @@ export const getSalesDetailAPI = async (sales_id: number, token: string) => {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/sales/${sales_id}`, {
+        const response = await fetch(`${API_URL}/api/sales/${sales_id}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -55,7 +57,7 @@ export const createSalesAPI = async (sales: PostSalesIn, token: string) => {
         }
         console.log("typeof sales:", typeof sales);
         console.log("sales:", sales);
-        const response = await fetch(`http://localhost:8000/api/sales`, {
+        const response = await fetch(`${API_URL}/api/sales`, {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(sales),
@@ -81,7 +83,7 @@ export const putSalesAPI = async (sales_id: number, sales: PutSalesIn, token: st
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/sales/${sales_id}`, {
+        const response = await fetch(`${API_URL}/api/sales/${sales_id}`, {
             method: "PUT",
             credentials: "include",
             body: JSON.stringify(sales),
@@ -107,7 +109,7 @@ export const getSalesTrendAPI = async (client_id: number, start_date: string, en
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/sales/trend/${client_id}?start_date=${start_date}&end_date=${end_date}`, {
+        const response = await fetch(`${API_URL}/api/sales/trend/${client_id}?start_date=${start_date}&end_date=${end_date}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -131,7 +133,7 @@ export const getYearSalesAPI = async (year: number, token: string) => {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/sales/trend/year/${year}`, {
+        const response = await fetch(`${API_URL}/api/sales/trend/year/${year}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -155,7 +157,7 @@ export const getTopSalesAPI = async (year: number, token: string) => {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/sales/top/${year}`, {
+        const response = await fetch(`${API_URL}/api/sales/top/${year}`, {
             method: "GET",
             credentials: "include",
             headers: {
