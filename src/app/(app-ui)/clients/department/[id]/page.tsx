@@ -11,19 +11,19 @@ import { useParams } from "next/navigation";
 import PageProtection from "@/app/pageProtection";
 import { useAuth } from "@/app/contexts/auth/auth";
 import { getDepartmentsAPI, postDepartmentAPI, putDepartmentAPI, deleteDepartmentAPI, updateDepartmentNameAPI } from "@/app/API/departent";
-import { GetDepartmentOut, TreeData } from "@/types/Department";
+import { GetDepartmentOut, TreeData, TreeNodeDatum } from "@/types/Department";
 
 export default function DepartmentPage() {
     const { id } = useParams();
     const { token } = useAuth();
 
     const [treeData, setTreeData] = useState<TreeData[]>([]);
-    const [selectedNode, setSelectedNode] = useState<any>(null);
+    const [selectedNode, setSelectedNode] = useState<TreeNodeDatum | null>(null);
     const [departmentName, setDepartmentName] = useState("");
 
     // ノード選択時
-    const handleSelectNode = (node: any) => {
-        setSelectedNode(node);
+    const handleSelectNode = (node: TreeNodeDatum) => {
+        setSelectedNode(node as TreeNodeDatum);
         setDepartmentName(node.name);
     };
 
@@ -44,7 +44,7 @@ export default function DepartmentPage() {
                 await updateDepartmentNameAPI(
                     parseInt(id as string),
                     token,
-                    selectedNode.attributes.department_id,
+                    selectedNode?.attributes?.department_id as number,
                     departmentName)
                 const data = await getDepartmentsAPI(parseInt(id as string), token);
                 setTreeData(data.map(convertToTreeData));
@@ -62,13 +62,13 @@ export default function DepartmentPage() {
     };
 
     const handleDeleteDepartment = async () => {
-        if(selectedNode.attributes.parent_department_id === 0) {
+        if(selectedNode?.attributes?.parent_department_id === 0) {
             alert("親ノードは削除できません");
             return;
         }
         if (window.confirm("削除しますか？")) {
             try {
-                await deleteDepartmentAPI(parseInt(id as string), token, selectedNode.attributes.department_id);
+                await deleteDepartmentAPI(parseInt(id as string), token, selectedNode?.attributes?.department_id as number);
                 const data = await getDepartmentsAPI(parseInt(id as string), token);
                 setTreeData(data.map(convertToTreeData));
             } catch (error) {
@@ -89,7 +89,7 @@ export default function DepartmentPage() {
                 parseInt(id as string),
                 token,
                 {
-                    parent_department_id: selectedNode.attributes.department_id,
+                    parent_department_id: selectedNode?.attributes?.department_id as number,
                     department_name: departmentName
                 }
             );
@@ -112,7 +112,7 @@ export default function DepartmentPage() {
                     selectedNode && (
                         <Box mb={3} borderBottom="1px solid #ddd" pb={2}>
                             <Typography variant="h6" gutterBottom>
-                                選択中: {selectedNode.name}
+                                選択中: {selectedNode?.name}
                             </Typography>
 
                             <Box display="flex" alignItems="center" gap={2} mb={2}>

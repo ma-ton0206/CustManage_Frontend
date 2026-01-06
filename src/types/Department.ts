@@ -46,3 +46,9 @@ export type UpdateDepartmentNameIn = {
 export type UpdateDepartmentNameOut = {
     department_id: number;
 }
+
+export interface TreeNodeDatum {
+    name: string;
+    attributes?: Record<string, string | number | boolean>;
+    children?: TreeNodeDatum[];
+}

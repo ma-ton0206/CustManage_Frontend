@@ -80,23 +80,23 @@ export default function ClientEditForm({ client_id }: ClientEditFormProps) {
             </Typography>
 
             <Grid sx={{ display: "flex", flexDirection: "column", gap: 2 }} container spacing={2} mb={3}>
-                <Grid item className="flex items-center gap-2">
+                <Grid size={{ xs: 12, sm: 6 }} className="flex items-center gap-2">
                     <Typography variant="body1" width="100px">企業名</Typography>
-                    <TextField fullWidth size="small" value={clientDetail?.client_name} onChange={(e) => setClientDetail({ ...clientDetail, client_name: e.target.value })} />
+                    <TextField fullWidth size="small" value={clientDetail?.client_name} onChange={(e) => setClientDetail({ ...clientDetail, client_name: e.target.value } as GetClientDetailOut)} />
                 </Grid>
-                <Grid item className="flex items-center gap-2">
+                <Grid size={{ xs: 12, sm: 6 }} className="flex items-center gap-2">
                     <Typography variant="body1" width="100px">業界</Typography>
-                    <TextField fullWidth size="small" value={clientDetail?.industry} onChange={(e) => setClientDetail({ ...clientDetail, industry: e.target.value })} />
+                    <TextField fullWidth size="small" value={clientDetail?.industry} onChange={(e) => setClientDetail({ ...clientDetail, industry: e.target.value } as GetClientDetailOut)} />
                 </Grid>
-                <Grid item className="flex items-center gap-2">
+                <Grid size={{ xs: 12, sm: 6 }} className="flex items-center gap-2">
                     <Typography variant="body1" width="100px">住所</Typography>
-                    <TextField fullWidth size="small" value={clientDetail?.client_address} onChange={(e) => setClientDetail({ ...clientDetail, client_address: e.target.value })} />
+                    <TextField fullWidth size="small" value={clientDetail?.client_address} onChange={(e) => setClientDetail({ ...clientDetail, client_address: e.target.value } as GetClientDetailOut)} />
                 </Grid>
-                <Grid item className="flex items-center gap-2">
+                <Grid size={{ xs: 12, sm: 6 }} className="flex items-center gap-2">
                     <Typography variant="body1" width="100px">電話番号</Typography>
-                    <TextField fullWidth size="small" value={clientDetail?.client_phone} onChange={(e) => setClientDetail({ ...clientDetail, client_phone: e.target.value })} />
+                    <TextField fullWidth size="small" value={clientDetail?.client_phone} onChange={(e) => setClientDetail({ ...clientDetail, client_phone: e.target.value } as GetClientDetailOut)} />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid size={{ xs: 12, sm: 6 }}>
                     <Button variant="contained" color="primary" onClick={() => navigateTo(`/clients/department/${id as string}`)}>組織表</Button>
                 </Grid>
             </Grid>

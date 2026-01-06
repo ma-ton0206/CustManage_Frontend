@@ -43,16 +43,16 @@ export default function ClientAddPage() {
                 </Typography>
 
                 <Grid sx={{ display: "flex", flexDirection: "column", gap: 2 }} container spacing={2} mb={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                         <TextField fullWidth label="企業名" variant="outlined" size="small" value={clientDetail?.client_name} onChange={(e) => setClientDetail({ ...clientDetail, client_name: e.target.value })} />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                         <TextField fullWidth label="業界" variant="outlined" size="small" value={clientDetail?.industry} onChange={(e) => setClientDetail({ ...clientDetail, industry: e.target.value })} />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                         <TextField fullWidth label="住所" variant="outlined" size="small" value={clientDetail?.client_address} onChange={(e) => setClientDetail({ ...clientDetail, client_address: e.target.value })} />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                         <TextField fullWidth label="電話番号" variant="outlined" size="small" value={clientDetail?.client_phone} onChange={(e) => setClientDetail({ ...clientDetail, client_phone: e.target.value })} />
                     </Grid>
                 </Grid>

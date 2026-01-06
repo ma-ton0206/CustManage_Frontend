@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useContext, useMemo } from "react";
 import { GetSalesOut, PostSalesIn, PutSalesIn } from "@/types/Sales";
-import { PutPurchaseDetailsIn } from "@/types/PurchaseDetails";
+import { GetPurchaseDetailsOut, PutPurchaseDetailsIn } from "@/types/PurchaseDetails";
 import { SalesStatus } from "@/constants/status";
 import { validate } from "./components/validate";
 import { useParams } from "next/navigation";
@@ -55,7 +55,7 @@ export const AddSalesProvider = ({ children }: { children: React.ReactNode }) =>
         [profit, sales?.sales_price]
     );
 
-    const getRowKey = (r: any) =>
+    const getRowKey = (r: GetPurchaseDetailsOut) =>
         r.purchase_id ?? r.front_id;
 
 
