@@ -1,11 +1,13 @@
 import { DeleteDepartmentOut, GetDepartmentOut, PostDepartmentIn, PostDepartmentOut, PutDepartmentIn, PutDepartmentOut, UpdateDepartmentNameOut } from "@/types/Department";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const getDepartmentsAPI = async (client_id: number, token: string) => {
     try {
         if (!token) {
             throw new Error("Token is required");
         }
-        const res = await fetch(`http://localhost:8000/api/departments/${client_id}`, {
+        const res = await fetch(`${API_URL}/api/departments/${client_id}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -28,7 +30,7 @@ export const postDepartmentAPI = async (client_id: number, token: string, depart
         if (!token) {
             throw new Error("Token is required");
         }
-        const res = await fetch(`http://localhost:8000/api/departments/${client_id}`, {
+        const res = await fetch(`${API_URL}/api/departments/${client_id}`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -53,7 +55,7 @@ export const putDepartmentAPI = async (client_id: number, token: string, departm
         if (!token) {
             throw new Error("Token is required");
         }
-        const res = await fetch(`http://localhost:8000/api/departments/${client_id}`, {
+        const res = await fetch(`${API_URL}/api/departments/${client_id}`, {
             method: "PUT",
             credentials: "include",
             headers: {
@@ -78,7 +80,7 @@ export const deleteDepartmentAPI = async (client_id: number, token: string, depa
         if (!token) {
             throw new Error("Token is required");
         }
-        const res = await fetch(`http://localhost:8000/api/departments/${client_id}/${department_id}`, {
+        const res = await fetch(`${API_URL}/api/departments/${client_id}/${department_id}`, {
             method: "DELETE",
             credentials: "include",
             headers: {
@@ -106,7 +108,7 @@ export const updateDepartmentNameAPI = async (
         if (!token) {
             throw new Error("Token is required");
         }
-        const res = await fetch(`http://localhost:8000/api/departments/${client_id}/${department_id}`, {
+        const res = await fetch(`${API_URL}/api/departments/${client_id}/${department_id}`, {
             method: "PATCH",
             credentials: "include",
             headers: {

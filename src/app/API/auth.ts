@@ -1,8 +1,10 @@
 import { AdminCreateUserIn, GetUserOut } from "@/types/User";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const LoginAPI = async (email: string, password: string, setErrorMsg: (err: string) => void) => {
     try {
-        const res = await fetch("http://localhost:8000/api/users/login", {
+        const res = await fetch(`${API_URL}/api/users/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -40,7 +42,7 @@ export const LoginAPI = async (email: string, password: string, setErrorMsg: (er
 
 export const AdminCreateUserAPI = async (user_in: AdminCreateUserIn, token: string, setErrorMsg: (err: string) => void) => {
     try {
-        const res = await fetch("http://localhost:8000/api/users/register", {
+        const res = await fetch(`${API_URL}/api/users/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -64,7 +66,7 @@ export const AdminCreateUserAPI = async (user_in: AdminCreateUserIn, token: stri
 
 export const RegisterCompleteAPI = async (userName: string, password: string, userEmail: string, token: string, setErrorMsg: (err: string) => void) => {
     try {
-        const res = await fetch("http://localhost:8000/api/users/activate", {
+        const res = await fetch(`${API_URL}/api/users/activate`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -93,7 +95,7 @@ export const RegisterCompleteAPI = async (userName: string, password: string, us
 
 export const FetchMeAPI = async (token: string) => {
     try {
-        const res = await fetch("http://localhost:8000/api/users/me", {
+        const res = await fetch(`${API_URL}/api/users/me`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,

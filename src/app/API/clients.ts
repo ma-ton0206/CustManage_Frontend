@@ -1,11 +1,13 @@
 import { DeleteClientOut, GetClientDetailOut, GetClientOut, PostClientIn, PostClientOut, PutClientIn, PutClientOut } from "@/types/Client";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const getClientsAPI = async (token: string) => {
     try {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/clients`, {
+        const response = await fetch(`${API_URL}/api/clients`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -28,7 +30,7 @@ export const createClientAPI = async (client_in: PostClientIn, token: string) =>
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/clients`, {
+        const response = await fetch(`${API_URL}/api/clients`, {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(client_in),
@@ -53,7 +55,7 @@ export const getClientDetailAPI = async (client_id: number, token: string) => {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/clients/${client_id}`, {
+        const response = await fetch(`${API_URL}/api/clients/${client_id}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -77,7 +79,7 @@ export const updateClientAPI = async (client_id: number, client_in: PutClientIn,
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/clients/${client_id}`, {
+        const response = await fetch(`${API_URL}/api/clients/${client_id}`, {
             method: "PUT",
             credentials: "include",
             body: JSON.stringify(client_in),
@@ -102,7 +104,7 @@ export const deleteClientAPI = async (client_id: number, token: string) => {
         if (!token) {
             throw new Error("Token is required");
         }
-        const response = await fetch(`http://localhost:8000/api/clients/${client_id}`, {
+        const response = await fetch(`${API_URL}/api/clients/${client_id}`, {
             method: "DELETE",
             credentials: "include",
             headers: {
