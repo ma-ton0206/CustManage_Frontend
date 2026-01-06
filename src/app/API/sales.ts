@@ -1,6 +1,6 @@
 import { GetSalesDetailOut, GetSalesOut, GetSalesTrendOut, GetYearSalesOut, PostSalesIn, PostSalesOut, PutSalesIn, PutSalesOut, GetTopSalesOut } from "@/types/Sales";
 
-const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const getSalesAPI = async (token: string) => {
     try {
