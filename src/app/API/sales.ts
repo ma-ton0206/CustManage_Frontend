@@ -1,6 +1,6 @@
 import { GetSalesDetailOut, GetSalesOut, GetSalesTrendOut, GetYearSalesOut, PostSalesIn, PostSalesOut, PutSalesIn, PutSalesOut, GetTopSalesOut } from "@/types/Sales";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = "https://custmanage-backend.onrender.com";
 
 export const getSalesAPI = async (token: string) => {
     try {
