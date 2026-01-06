@@ -1,6 +1,6 @@
 import { AdminCreateUserIn, GetUserOut } from "@/types/User";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const LoginAPI = async (email: string, password: string, setErrorMsg: (err: string) => void) => {
     try {

@@ -1,6 +1,6 @@
 import { GetTaskOut, PostTaskIn, PutTaskIn, PostTaskOut, PutTaskOut, DeleteTaskOut } from "@/types/Task";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const getTasksAPI = async (token: string) => {
     try {
